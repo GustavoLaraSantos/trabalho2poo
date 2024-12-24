@@ -29,11 +29,12 @@ class LoginScreen(Screen):
         password_label.grid(row=2, column=0, sticky="w", padx=40, pady=(20, 5))
         self.password_entry = tk.Entry(input_frame, font=("Arial", 14), show="*", bg="#2e2e2e", fg="#ffffff", insertbackground="#ffffff", width=30)
         self.password_entry.grid(row=3, column=0, padx=40, sticky="w")
+        self.password_entry.bind("<Return>", lambda event: self.authenticate())
 
-        login_button = tk.Button(main_frame, text="Entrar", font=("Arial", 14), command=self.authenticate, bg="#3e3e3e", fg="#ffffff", activebackground="#5e5e5e", activeforeground="#ffffff")
+        login_button = tk.Button(main_frame, text="Entrar", font=("Arial", 14), command=self.authenticate, bg="#3e3e3e", fg="#ffffff", activebackground="#5e5e5e", activeforeground="#ffffff", cursor="hand2")
         login_button.pack(pady=30)
 
-        exit_button = tk.Button(main_frame, text="Sair", font=("Arial", 10), command=self.exit_app, bg="#ff4d4d", fg="#ffffff", activebackground="#ff6666", activeforeground="#ffffff")
+        exit_button = tk.Button(main_frame, text="Sair", font=("Arial", 10), command=self.exit_app, bg="#ff4d4d", fg="#ffffff", activebackground="#ff6666", activeforeground="#ffffff", cursor="hand2")
         exit_button.place(relx=0.99, rely=0.99, anchor="se", x=-20, y=-20)  # Ajuste da posição do botão Sair
 
     def authenticate(self):
