@@ -1,7 +1,7 @@
 import json
 import os
 
-class Items:
+class ItemsSystem:
     def __init__(self, filename):
         self.filename = filename
         self.__ensure_file()

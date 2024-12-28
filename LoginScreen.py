@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox
 from Screen import Screen
+from DashboardScreen import DashboardScreen
 
 class LoginScreen(Screen):
     def __init__(self, root):
@@ -34,21 +35,20 @@ class LoginScreen(Screen):
         login_button = tk.Button(main_frame, text="Entrar", font=("Arial", 14), command=self.authenticate, bg="#3e3e3e", fg="#ffffff", activebackground="#5e5e5e", activeforeground="#ffffff", cursor="hand2")
         login_button.pack(pady=30)
 
-        exit_button = tk.Button(main_frame, text="Sair", font=("Arial", 10), command=self.exit_app, bg="#ff4d4d", fg="#ffffff", activebackground="#ff6666", activeforeground="#ffffff", cursor="hand2")
-        exit_button.place(relx=0.99, rely=0.99, anchor="se", x=-20, y=-20)  # Ajuste da posição do botão Sair
+        exit_button = tk.Button(main_frame, text="Fechar", font=("Arial", 10), command=self.exit_app, bg="#ff4d4d", fg="#ffffff", activebackground="#ff6666", activeforeground="#ffffff", cursor="hand2")
+        exit_button.place(relx=0.99, rely=0.99, anchor="se", x=-20, y=-20)
 
     def authenticate(self):
         user = self.user_entry.get().strip()
         password = self.password_entry.get().strip()
 
         if user == "admin" and password == "admin":
-            self.next_page()
+            for widget in self.root.winfo_children():
+                widget.destroy()
+            dashboard_screen = DashboardScreen(self.root)
+            dashboard_screen.display()
         else:
             messagebox.showerror("Erro", "Usuário e/ou Senha incorretos")
-
-    def next_page(self):
-        messagebox.showinfo("Sucesso", "Login realizado com sucesso! Avançando para a próxima página.")
-        # Aqui você pode implementar a transição para a próxima página.
 
     def exit_app(self):
         self.root.destroy()
