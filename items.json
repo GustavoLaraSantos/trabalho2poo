@@ -1,6 +1,10 @@
 [
     {
-        "name": "Teste",
-        "quantity": 13
+        "name": "Resistência 10 Ohms",
+        "quantity": 8
+    },
+    {
+        "name": "Resistência 15 Ohms",
+        "quantity": 2
     }
 ]

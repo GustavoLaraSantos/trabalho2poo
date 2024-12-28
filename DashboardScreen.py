@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import messagebox, simpledialog
 from Screen import Screen
 from ItemsSystem import ItemsSystem
+from AddProductScreen import AddProductScreen
 
 class DashboardScreen(Screen):
     def __init__(self, root):
@@ -108,13 +109,15 @@ class DashboardScreen(Screen):
             messagebox.showerror("Erro", response["statusMessage"])
 
     def add_product(self):
-        messagebox.showinfo("Sucesso", "Fluxo para adicionar produto.")
-        # Aqui você pode implementar a transição para a próxima página.
+        for widget in self.root.winfo_children():
+            widget.destroy()
+        add_product_screen = AddProductScreen(self.root)
+        add_product_screen.display()
 
     def logout(self):
         from LoginScreen import LoginScreen
         for widget in self.root.winfo_children():
-                widget.destroy()
+            widget.destroy()
         login_screen = LoginScreen(self.root)
         login_screen.display()
 
