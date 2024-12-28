@@ -89,7 +89,16 @@ class DashboardScreen(Screen):
         new_quantity = item["quantity"] + delta
         if new_quantity < 0:
             new_quantity = 0
+        self.update_quantity(item, new_quantity)
         
+        
+
+    def set_quantity(self, item):
+        new_quantity = simpledialog.askinteger("Alterar Quantidade", f"Digite a nova quantidade para {item['name']}", minvalue=0)
+        if new_quantity is not None:
+            self.update_quantity(item, new_quantity)
+
+    def update_quantity(self, item, new_quantity):
         response = self.items_system.update_item(item["name"], new_quantity)
 
         if response["status"] == 200:
@@ -97,12 +106,6 @@ class DashboardScreen(Screen):
             self.render_items()
         else:
             messagebox.showerror("Erro", response["statusMessage"])
-
-    def set_quantity(self, item):
-        new_quantity = simpledialog.askinteger("Alterar Quantidade", f"Digite a nova quantidade para {item['name']}", minvalue=0)
-        if new_quantity is not None:
-            item["quantity"] = new_quantity
-            self.render_items()
 
     def add_product(self):
         messagebox.showinfo("Sucesso", "Fluxo para adicionar produto.")
