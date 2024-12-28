@@ -1,10 +1,6 @@
 [
     {
-        "name": "Resistência 10 Ohms",
+        "name": "Resist\u00eancia 10 Ohms",
         "quantity": 8
-    },
-    {
-        "name": "Resistência 15 Ohms",
-        "quantity": 2
     }
 ]

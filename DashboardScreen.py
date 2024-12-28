@@ -51,6 +51,17 @@ class DashboardScreen(Screen):
             item_label = tk.Label(item_frame, text=item["name"], font=("Arial", 14), bg="#2e2e2e", fg="#ffffff")
             item_label.pack(side="left", padx=10)
 
+            delete_button = tk.Button(
+                item_frame,
+                text="🗑",
+                font=("Arial", 12),
+                command=lambda i=item: self.delete_item(i),
+                bg="#ff4d4d",
+                fg="#ffffff",
+                cursor="hand2",
+            )
+            delete_button.pack(side="right", padx=10, pady=10)
+
             decrement_button = tk.Button(
                 item_frame,
                 text="-",
@@ -92,7 +103,7 @@ class DashboardScreen(Screen):
             new_quantity = 0
         self.update_quantity(item, new_quantity)
         
-        
+    
 
     def set_quantity(self, item):
         new_quantity = simpledialog.askinteger("Alterar Quantidade", f"Digite a nova quantidade para {item['name']}", minvalue=0)
@@ -104,6 +115,14 @@ class DashboardScreen(Screen):
 
         if response["status"] == 200:
             item["quantity"] = new_quantity
+            self.render_items()
+        else:
+            messagebox.showerror("Erro", response["statusMessage"])
+
+    def delete_item(self, item):
+        response = self.items_system.delete_item(item['name'])
+        if (response['status'] == 200):
+            self.items.remove(item)
             self.render_items()
         else:
             messagebox.showerror("Erro", response["statusMessage"])
