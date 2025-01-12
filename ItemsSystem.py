@@ -24,7 +24,7 @@ class ItemsSystem:
         if any(item['name'] == name for item in items):
             return {
                 'status': 400,
-                'statusMessage': f"Item with name '{name}' already exists.",
+                'statusMessage': f"O item com o nome '{name}' já existe.",
                 'data': {}
             }
         new_item = {"name": name, "quantity": quantity}
@@ -32,7 +32,7 @@ class ItemsSystem:
         self.__save_items(items)
         return {
             'status': 201,
-            'statusMessage': f"Item with name '{name}' created successfully.",
+            'statusMessage': f"O item com o nome '{name}' foi criado com sucesso.",
             'data': new_item
         }
 
@@ -42,12 +42,12 @@ class ItemsSystem:
             if item['name'] == name:
                 return {
                     'status': 200,
-                    'statusMessage': f"Item with name '{name}' found successfully.",
+                    'statusMessage': f"O item com o nome '{name}' foi encontrado.",
                     'data': item
                 }
         return {
             'status': 404,
-            'statusMessage': f"Item with name '{name}' not found.",
+            'statusMessage': f"O item com o nome '{name}' não foi encontrado.",
             'data': {}
         }
 
@@ -59,12 +59,12 @@ class ItemsSystem:
                 self.__save_items(items)
                 return {
                     'status': 200,
-                    'statusMessage': f"Item with name '{name}' updated successfully.",
+                    'statusMessage': f"O item com o nome '{name}' foi atualizado.",
                     'data': {"name": name, "quantity": quantity}
                 }
         return {
             'status': 404,
-            'statusMessage': f"Item with name '{name}' not found.",
+            'statusMessage': f"O item com o nome '{name}' não foi encontrado.",
             'data': {}
         }
 
@@ -74,19 +74,19 @@ class ItemsSystem:
         if len(filtered_items) == len(items):
             return {
                 'status': 404,
-                'statusMessage': f"Item with name '{name}' not found.",
+                'statusMessage': f"O item com o nome '{name}' não foi encontrado.",
                 'data': {}
             }
         self.__save_items(filtered_items)
         return {
             'status': 200,
-            'statusMessage': f"Item with name '{name}' deleted successfully.",
+            'statusMessage': f"O item com o nome '{name}' foi deletado com sucesso.",
             'data': {}
         }
 
     def list_items(self):
         return {
             'status': 200,
-            'statusMessage': f"All items found successfully.",
+            'statusMessage': f"Todos os itens foram encontrados.",
             'data': self.__load_items()
         }

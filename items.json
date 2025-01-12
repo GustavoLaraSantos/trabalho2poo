@@ -1,6 +1,10 @@
 [
     {
         "name": "Resist\u00eancia 10 Ohms",
+        "quantity": 25
+    },
+    {
+        "name": "Cabo 4mm",
         "quantity": 8
     }
 ]

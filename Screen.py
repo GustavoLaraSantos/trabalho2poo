@@ -3,6 +3,7 @@ from abc import ABC, abstractmethod
 from ItemsSystem import ItemsSystem
 
 class Screen(ABC):
+    @abstractmethod
     def __init__(self, root):
         self.root = root
         self.root.title()

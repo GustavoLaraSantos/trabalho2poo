@@ -35,7 +35,7 @@ class LoginScreen(Screen):
         login_button = tk.Button(main_frame, text="Entrar", font=("Arial", 14), command=self.authenticate, bg="#3e3e3e", fg="#ffffff", activebackground="#5e5e5e", activeforeground="#ffffff", cursor="hand2")
         login_button.pack(pady=30)
 
-        exit_button = tk.Button(main_frame, text="Fechar", font=("Arial", 10), command=self.exit_app, bg="#ff4d4d", fg="#ffffff", activebackground="#ff6666", activeforeground="#ffffff", cursor="hand2")
+        exit_button = tk.Button(main_frame, text="Sair", font=("Arial", 10), command=self.exit_app, bg="#ff4d4d", fg="#ffffff", activebackground="#ff6666", activeforeground="#ffffff", cursor="hand2")
         exit_button.place(relx=0.99, rely=0.99, anchor="se", x=-20, y=-20)
 
     def authenticate(self):
